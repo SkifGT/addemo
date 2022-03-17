@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { Row, Col, Slider, Typography } from 'antd'
+import React from 'react';
+
+import Header from "./components/Header";
+import Table from "./components/Table";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  const [rows, setRows] = React.useState(5)
+  return (<>
+    <Header/>
+    <Row>
+      <Col xs={24} md={{ span: 12, offset: 6}}>
+      <Typography.Title level={4}>Количество пицц на странице:</Typography.Title>
+      <Slider min={2} max={9} defaultValue={rows} onChange={setRows}/>
+        <Table rows = {rows} />
+      </Col>
+    </Row>
+
+    </>
   );
+  
+
 }
 
 export default App;
